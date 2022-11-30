@@ -8,8 +8,15 @@ class myClass{
         result = arg1 + arg2;
         return result;
     }
-}
 
-//export default myClass;
+    callAnotherFn (arg1, arg2){
+        let result = this.add(arg1, arg2);
+        return result;
+    }
+
+    callTheCallback(callback){
+        callback();
+    }
+}
 
 module.exports = myClass;
