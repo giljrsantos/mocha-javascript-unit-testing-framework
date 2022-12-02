@@ -14,7 +14,7 @@ describe("Test unit", function(){
             dos arg1 + arg2 seja igual a 3
         */
         expect(myObj.add(1, 2)).to.be.equal(3);
-    })
+    });
 
 
     it("spy the add method", function(){
@@ -32,13 +32,25 @@ describe("Test unit", function(){
         // ligando o "spy" com os paramentros informados é verdadeiro
         expect(spy.calledWith(arg1, arg2)).to.be.true;
 
-    })
+    });
 
     it("spy the callback method", function(){
         
         let callback = sinon.spy();
         myObj.callTheCallback(callback);
         expect(callback.calledOnce).to.be.true;
-    })
+
+    });
+
+    it("mock the sayHello methed", function() {
+
+        let mock = sinon.mock(myObj);
+        let expetcation = mock.expects("sayHello");
+        expetcation.exactly(1);
+        expetcation.withArgs("hello world");
+        myObj.callAnotherFn(10,20);
+        mock.verify();
+
+    });
 
 });

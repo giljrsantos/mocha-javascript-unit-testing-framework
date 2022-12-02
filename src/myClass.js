@@ -3,6 +3,10 @@ class myClass{
         console.log(`initate`);
     }
 
+    sayHello(str){
+        console.log(str)
+    }
+
     add(arg1, arg2){
         let result;
         result = arg1 + arg2;
@@ -10,6 +14,7 @@ class myClass{
     }
 
     callAnotherFn (arg1, arg2){
+        this.sayHello("hello world");
         let result = this.add(arg1, arg2);
         return result;
     }
