@@ -4,7 +4,7 @@
   "description": "Desenvolvendo testes unitários comm Mocha",
   "main": "index.js",
   "scripts": {
-    "test": "mocha './test/**/*.spec.js'"
+    "test": "nyc --reporter=html mocha './test/**/*.spec.js'"
   },
   "author": "Gilberto Jr",
   "license": "ISC",
@@ -12,6 +12,7 @@
     "chai": "^4.3.7",
     "mocha": "^10.1.0",
     "nodemon": "^2.0.20",
+    "nyc": "^15.1.0",
     "sinon": "^15.0.0"
   }
 }
