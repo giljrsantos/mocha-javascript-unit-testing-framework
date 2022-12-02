@@ -6,7 +6,7 @@ let expect = chai.expect;
 //estanciando a classe
 let myObj = new myClass();
 
-describe("Test unit", function(){
+describe.skip("Test unit", function(){
 
     it("Test the add method", function(){
         /*
@@ -53,4 +53,16 @@ describe("Test unit", function(){
 
     });
 
+});
+
+describe("Test unit for stub", function(){
+
+    it("Stub the add method", function(){
+        let stub = sinon.stub(myObj, "add");
+        stub.withArgs(10, 20)
+        .onFirstCall().returns(100)
+        .onSecondCall().returns(200);
+        expect(myObj.callAnotherFn(10, 20)).to.be.equal(100);
+        expect(myObj.callAnotherFn(10, 20)).to.be.equal(200);
+    });
 });
