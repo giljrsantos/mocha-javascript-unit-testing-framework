@@ -17,3 +17,11 @@
 
 - espera que a ligação da variável "spy" com os paramentros informados é verdadeiro
 - `expect(spy.calledWith(arg1, arg2)).to.be.true;`
+
+
+<p align="center">
+<img src="./src/assert/screen-1.png" width="auto">
+<img src="./src/assert/screen-2.png" width="auto">
+</p>
+
+<h1 align="center">💻 Desenvolvido Por: Gilberto Júnior</h1>
