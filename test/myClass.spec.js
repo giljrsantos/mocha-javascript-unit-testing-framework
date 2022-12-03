@@ -85,18 +85,6 @@ describe("Test unit", function(){
 
 });
 
-// describe.skip("Test unit for stub", function(){
-
-//     it("Stub the add method", function(){
-//         let stub = sinon.stub(myObj, "add");
-//         stub.withArgs(10, 20)
-//         .onFirstCall().returns(100)
-//         .onSecondCall().returns(200);
-//         expect(myObj.callAnotherFn(10, 20)).to.be.equal(100);
-//         expect(myObj.callAnotherFn(10, 20)).to.be.equal(200);
-//     });
-// });
-
 describe('Test the promise', function(){
     it("Promise test case", function(){
         this.timeout(0);

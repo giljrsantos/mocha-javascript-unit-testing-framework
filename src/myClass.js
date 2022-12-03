@@ -30,7 +30,7 @@ class myClass{
 
     testPromise(){
         return new Promise( function(resolve, reject){
-            setTimeout(() => resolve(3), 6000);
+            setTimeout(() => resolve(3), 0);
             }).then((result) => {
                 return result * 2;
             })
