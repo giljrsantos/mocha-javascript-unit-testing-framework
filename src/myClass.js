@@ -22,6 +22,15 @@ class myClass{
     callTheCallback(callback){
         callback();
     }
+
+    testPromise(){
+        return new Promise( function(resolve, reject){
+            setTimeout(() => resolve(3), 6000);
+            }).then((result) => {
+                return result * 2;
+            })
+        }
+    
 }
 
 module.exports = myClass;

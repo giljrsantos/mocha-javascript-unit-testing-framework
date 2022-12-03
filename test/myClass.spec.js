@@ -2,6 +2,8 @@ let myClass = require("../src/myClass");
 let chai = require("chai");
 let sinon = require("sinon");
 let expect = chai.expect;
+const chaiaspromise = require("chai-as-promised");
+chai.use(chaiaspromise);
 
 //estanciando a classe
 let myObj = new myClass();
@@ -55,7 +57,7 @@ describe.skip("Test unit", function(){
 
 });
 
-describe("Test unit for stub", function(){
+describe.skip("Test unit for stub", function(){
 
     it("Stub the add method", function(){
         let stub = sinon.stub(myObj, "add");
@@ -66,3 +68,14 @@ describe("Test unit for stub", function(){
         expect(myObj.callAnotherFn(10, 20)).to.be.equal(200);
     });
 });
+
+describe('Test the promise', function(){
+    it("Promise test case", function(){
+        this.timeout(0);
+        // myObj.testPromise().then(function(result){
+        //     expect(result).to.be.equal(6);
+        //     done();
+        // });
+        return expect(myObj.testPromise()).to.eventually.equal(6);
+    });
+})
