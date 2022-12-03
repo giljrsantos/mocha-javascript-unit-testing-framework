@@ -12,8 +12,12 @@
     "chai": "^4.3.7",
     "chai-as-promised": "^7.1.1",
     "mocha": "^10.1.0",
+    "nock": "^13.2.9",
     "nodemon": "^2.0.20",
     "nyc": "^15.1.0",
     "sinon": "^15.0.0"
+  },
+  "dependencies": {
+    "xmlhttprequest": "^1.8.0"
   }
 }

@@ -4,11 +4,12 @@ let sinon = require("sinon");
 let expect = chai.expect;
 const chaiaspromise = require("chai-as-promised");
 chai.use(chaiaspromise);
+const nock  = require("nock");
 
 //estanciando a classe
 let myObj = new myClass();
 
-describe.skip("Test unit", function(){
+describe("Test unit", function(){
 
     it("Test the add method", function(){
         /*
@@ -78,4 +79,29 @@ describe('Test the promise', function(){
         // });
         return expect(myObj.testPromise()).to.eventually.equal(6);
     });
-})
+});
+
+describe('XHR test suit', function(){
+    it("Mock and stub xhr call", function(){
+        
+        const scope = nock(`https://echo-service-new.herokuapp.com`)
+            .post(`/echo`)
+            .reply(200, {id: 123});
+        myObj.xhrFn().then(function(result){
+            expect(result).to.be.equal({id: 123});
+            //done();
+        })
+        
+    });
+    it("Mock and stub xhr call", function(){
+        
+        const scope = nock(`https://echo-service-new.herokuapp.com`)
+            .post(`/ec`)
+            .reply(404, {id: 1});
+        myObj.xhrFn().then(function(result){
+            expect(result).to.be.equal({id: 123});
+            //done();
+        })
+        
+    });
+});
