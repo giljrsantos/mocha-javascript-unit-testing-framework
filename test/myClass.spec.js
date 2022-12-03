@@ -11,6 +11,16 @@ let myObj = new myClass();
 
 describe("Test unit", function(){
 
+    after(function(){});
+    
+    before(function(){});
+
+    afterEach(function(){}); 
+
+    beforeEach(function(){
+        sinon.restore();
+    });    
+
     it("Test the add method", function(){
         /*
             o sistema esta esperando que o resultado pela soma
@@ -21,6 +31,23 @@ describe("Test unit", function(){
 
 
     it("spy the add method", function(){
+        
+        let spy = sinon.spy(myObj, "add");
+        // atribuindo valores aos argumentos
+        let arg1 = 10, arg2 = 20;
+        // informando os dois argumentos que a função
+        // "callAnotherFn" espera
+        myObj.callAnotherFn(arg1, arg2);
+        //chamando o "spy" uma vez
+        sinon.assert.calledOnce(spy);
+        // a chamada do "spy" é verdadeira
+        expect(spy.calledOnce).to.be.true;
+        // ligando o "spy" com os paramentros informados é verdadeiro
+        expect(spy.calledWith(arg1, arg2)).to.be.true;
+
+    });
+
+    it("copy spy the add method", function(){
         
         let spy = sinon.spy(myObj, "add");
         // atribuindo valores aos argumentos
@@ -58,17 +85,17 @@ describe("Test unit", function(){
 
 });
 
-describe.skip("Test unit for stub", function(){
+// describe.skip("Test unit for stub", function(){
 
-    it("Stub the add method", function(){
-        let stub = sinon.stub(myObj, "add");
-        stub.withArgs(10, 20)
-        .onFirstCall().returns(100)
-        .onSecondCall().returns(200);
-        expect(myObj.callAnotherFn(10, 20)).to.be.equal(100);
-        expect(myObj.callAnotherFn(10, 20)).to.be.equal(200);
-    });
-});
+//     it("Stub the add method", function(){
+//         let stub = sinon.stub(myObj, "add");
+//         stub.withArgs(10, 20)
+//         .onFirstCall().returns(100)
+//         .onSecondCall().returns(200);
+//         expect(myObj.callAnotherFn(10, 20)).to.be.equal(100);
+//         expect(myObj.callAnotherFn(10, 20)).to.be.equal(200);
+//     });
+// });
 
 describe('Test the promise', function(){
     it("Promise test case", function(){
@@ -96,7 +123,7 @@ describe('XHR test suit', function(){
     it("Mock and stub xhr call", function(){
         
         const scope = nock(`https://echo-service-new.herokuapp.com`)
-            .post(`/ec`)
+            .post(`/error`)
             .reply(404, {id: 1});
         myObj.xhrFn().then(function(result){
             expect(result).to.be.equal({id: 123});
